@@ -43,11 +43,11 @@ spec:
 ---
 apiVersion: v1
 data:
-  DB_PASS: "dsafsafdsafasfdsaf"
+  DB_PASS: "thisisapassword"
 kind: Secret
 metadata:
   labels:
-    porter.run/datastore-id: ba424c47-8af5-4801-8327-2f95ad420b52
+    porter.run/datastore-id: 5f0e6ca2-d413-483f-bffc-186497355f36
     porter.run/managed: "true"
   name: argo-rds-password
   namespace: "844966915049"
