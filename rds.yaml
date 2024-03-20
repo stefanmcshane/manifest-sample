@@ -43,7 +43,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  DB_PASS: "thisisapassword"
+  DB_PASS: dGhpcy1pcy1hLXBhc3N3b3Jk
 kind: Secret
 metadata:
   labels:
