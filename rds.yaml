@@ -43,7 +43,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  DB_PASS: "argo-rds-master-password"
+  DB_PASS: "dsafsafdsafasfdsaf"
 kind: Secret
 metadata:
   labels:
