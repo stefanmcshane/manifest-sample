@@ -36,5 +36,3 @@ spec:
         name: guestbook-ui
         ports:
         - containerPort: 80
-        command:
-        - exit 2
