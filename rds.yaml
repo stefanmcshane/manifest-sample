@@ -1,0 +1,83 @@
+apiVersion: ec2.services.k8s.aws/v1alpha1
+kind: SecurityGroup
+metadata:
+  annotations:
+    services.k8s.aws/region: eu-west-1
+  name: argo-rds
+  namespace: "844966915049"
+spec:
+  description: Porter-managed security group for argo-rds datastore
+  ingressRules:
+  - fromPort: 5432
+    ipProtocol: tcp
+    ipRanges:
+    - cidrIP: 10.78.0.0/16
+    toPort: 5432
+  name: argo-rds
+  tags:
+  - key: porter.run/managed
+    value: "true"
+  - key: porter.run/resource-id
+    value: e4cf8227-f856-4642-8901-304e2a29e596
+  vpcID: vpc-07ed7a26675ccbc44
+---
+apiVersion: rds.services.k8s.aws/v1alpha1
+kind: DBSubnetGroup
+metadata:
+  annotations:
+    services.k8s.aws/region: eu-west-1
+  name: argo-rds
+  namespace: "844966915049"
+spec:
+  description: Porter-managed DB subnet group for argo-rds
+  name: argo-rds
+  subnetIDs:
+  - subnet-09af815c96f7572be
+  - subnet-013183eddd22c8560
+  - subnet-059c3ad01b3436c87
+  tags:
+  - key: porter.run/managed
+    value: "true"
+  - key: porter.run/resource-id
+    value: ba424c47-8af5-4801-8327-2f95ad420b52
+---
+apiVersion: v1
+data:
+  DB_PASS: "password"
+kind: Secret
+metadata:
+  labels:
+    porter.run/datastore-id: ba424c47-8af5-4801-8327-2f95ad420b52
+    porter.run/managed: "true"
+  name: argo-rds-password
+  namespace: "844966915049"
+type: Opaque
+---
+apiVersion: rds.services.k8s.aws/v1alpha1
+kind: DBInstance
+metadata:
+  annotations:
+    services.k8s.aws/region: eu-west-1
+  name: argo-rds
+  namespace: "844966915049"
+spec:
+  allocatedStorage: 30
+  backupRetentionPeriod: 14
+  caCertificateIdentifier: rds-ca-rsa2048-g1
+  dbInstanceClass: db.t4g.small
+  dbInstanceIdentifier: argo-rds
+  dbSubnetGroupName: argo-rds
+  engine: postgres
+  engineVersion: "15.4"
+  masterUserPassword:
+    key: DB_PASS
+    name: argo-rds-password
+    namespace: "844966915049"
+  masterUsername: postgres
+  tags:
+  - key: porter.run/managed
+    value: "true"
+  - key: porter.run/resource-id
+    value: ba424c47-8af5-4801-8327-2f95ad420b52
+  vpcSecurityGroupIDs:
+  - sg-0b2f19427ac7877a7
