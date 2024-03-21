@@ -42,7 +42,6 @@ kind: Policy
 metadata:
   annotations:
     services.k8s.aws/deletion-policy: retain
-  generation: 2
   name: steftest
   namespace: 026281491146-access
 spec:
