@@ -41,6 +41,6 @@ apiVersion: s3.services.k8s.aws/v1alpha1
 kind: Bucket
 metadata:
   name: stefan-test
-  namespace: 026281491146
+  namespace: "026281491146"
 spec:
   name: stefan-test
