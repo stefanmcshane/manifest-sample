@@ -48,7 +48,7 @@ spec:
   description: Managed by stefan
   name: steftest
   path: /
-  policyDocument: '{"Statement":[{"Action":["autoscaling:TerminateInstanceInAutoScalingGroup","ec2:DescribeImages","ec2:GetInstanceTypesFromInstanceRequirements","eks:DescribeNodegroup","autoscaling:DescribeAutoScalingGroups","autoscaling:DescribeAutoScalingInstances","autoscaling:DescribeLaunchConfigurations","autoscaling:DescribeScalingActivities","autoscaling:DescribeTags","ec2:DescribeInstanceTypes","ec2:DescribeLaunchTemplateVersions"],"Effect":"Allow","Resource":["*"],"Sid":"ManageClusterAutoscaling"}],"Version":"2012-10-17"}'
+  policyDocument: '{"Statement":[{"ction":["autoscaling:TerminateInstanceInAutoScalingGroup","ec2:DescribeImages","ec2:GetInstanceTypesFromInstanceRequirements","eks:DescribeNodegroup","autoscaling:DescribeAutoScalingGroups","autoscaling:DescribeAutoScalingInstances","autoscaling:DescribeLaunchConfigurations","autoscaling:DescribeScalingActivities","autoscaling:DescribeTags","ec2:DescribeInstanceTypes","ec2:DescribeLaunchTemplateVersions"],"Effect":"Allow","Resource":["*"],"Sid":"ManageClusterAutoscaling"}],"Version":"2012-10-17"}'
   tags:
   - key: porter.run/managed
     value: "true"
